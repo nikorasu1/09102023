@@ -1,0 +1,69 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Criptografia</title>
+    <script lang="JavaScript">
+        
+        function criptografar()
+        {
+            var str, str2, i, codAtual, codNovo;
+
+            str = document.frm.txtCarac.value;
+            str2= "";
+
+            for(i = 0; i < str.length; ++i)
+            {
+                codAtual = str.charCodeAt(i);
+                codNovo = codAtual + 23;
+                str2 += String.fromCharCode(codNovo);
+            }
+
+            str2 = str2.split('').reverse().join('');
+            document.getElementById("alvo1").innerHTML = "Mensagem criptografada: " + str2 + "<br>";
+        }
+
+        function descriptografar()
+        {
+            var str, str2, i, codAtual, codNovo;
+
+            str = document.frm.txtCarac2.value;
+            str2 = "";
+
+            for(i = 0; i<str.length; ++i)
+            {
+                codAtual = str.charCodeAt(i);
+                codNovo = codAtual - 23;                 
+                str2 += String.fromCharCode(codNovo);
+            }
+
+            str2 = str2.split('').reverse().join('');
+            document.getElementById("alvo2").innerHTML = "Mensagem descriptografada: " + str2 + "<br>";
+        }
+    </script>
+
+    <style>
+        body
+        {
+            font-family: Arial;
+        }
+    </style>
+</head>
+<body>
+            <form name="frm">
+                Insira uma mensagem para ser criptografada:<input type="text" name="txtCarac" value=""><br>
+                <input type="button" value="Criptografar" onclick="criptografar()"><br><br>
+
+                Insira uma mensagem para ser descriptografada:<input type="text" name="txtCarac2" value=""><br>
+                <input type="button" value="Descriptografar" onclick="descriptografar()"><br><br>
+            </form>
+
+            <div id="alvo1">
+
+            </div>
+
+            <div id="alvo2">
+
+            </div>
+
+</body>
+</html>
